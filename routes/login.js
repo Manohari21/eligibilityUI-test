@@ -41,36 +41,4 @@ router.post('/sendTemporaryPassword', (req, res) => {
     });
 })
 
-router.post('/validate', (req, res) => {
-    logger.info("Validate page requested");
-    var errormessage = 'Invalid Username/password';
-    logger.info("username "+req.body.username)
-
-    let url = LOGIN_SERVICE_URL + `?name=${req.body.username}`;
-    logger.info("url "+url)
-    axios.get(url).then(function (response) {
-        logger.info("Fetching user details from: " + url);
-        const status = response.status;
-        if (status != 200) {
-            logger.error("Status is not 200");
-            logger.error("Error message: " + response.data);
-            throw Error("Unable to continue, status received: " + status);
-        }
-        const data = response.data;
-        req.session.username = data.name;
-        req.session.userid = data.id;
-        if (data.name == req.body.username && data.password == req.body.password) {
-            logger.info("Successfully authenticated username: " + data.name);
-            res.redirect('/oauth');
-        }
-        else {
-            logger.info("Unable to log in username: " + data.name);
-            res.render('login.ejs', { errormessage: errormessage });
-        }
-    }).catch(function (error) {
-        logger.error(`Error: ${error.message}`);
-
-    });
-});
-
 module.exports = router;
