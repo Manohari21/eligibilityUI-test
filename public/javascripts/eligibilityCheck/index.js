@@ -11,12 +11,7 @@ $(document).ready(function () {
 });
 function onCancelClicked() {
     document.getElementById("eligibility-check-form").reset();
-  }
-
-//   function onEnrollCancelClicked() {
-//     document.getElementById("register-form").reset();
-//   }
- 
+  } 
 
 function addFieldValidationBorder(tag) {
     document.querySelector(tag).classList.add("border", "border-danger");
