@@ -25,13 +25,19 @@
                     <%- include("dependentTable.ejs") %>
                     <%- include("dependentForm.ejs") %>
                 </div>
-                <button type="submit" class="btn btn-primary">Register</button>
+                <button type="submit" class="btn btn-success">Register</button>
+                <input type="button" class="btn btn-danger" value="Cancel" onclick="onEnrollCancelClicked();" />
             </form>
             <hr>
         </div>
         <%- include("../helpers/footer.ejs") %>
     </main>
     <script src="javascripts/enrollment/index.js"></script>
+    <script>
+        function onEnrollCancelClicked() {
+           document.getElementById("register-form").reset();
+        }
+     </script>
 </body>
 
 </html>

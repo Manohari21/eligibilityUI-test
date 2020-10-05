@@ -33,7 +33,6 @@ app.use(session({
 
 app.use('/', loginRouter);
 app.use('/home', homeRouter);
-app.use('/oauth', oauthRouter);
 app.use('/generateToken', oauthRouter);
 app.use("/eligibility", eligibilityRouter);
 app.use("/enrollment", enrollmentRouter);

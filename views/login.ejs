@@ -10,11 +10,11 @@
 </head>
 <body>
     
-    <div class="login"> 
-        <h1>Login</h1>      
-        <form action="/validate" method="POST">
-            <p> <input type="text" id="username" name="username" placeholder="Username"required> </p>
-            <p> <input type="password" id="password" name="password" placeholder="Password" required> </p>
+    <div class="login">
+        <h1>Please enter your details to Login</h1>
+        <form action="/generateToken" method="POST">
+            <p> <input type="text" id="usernameoauth" name="username" placeholder="Username" required> </p>
+            <p> <input type="password" id="passwordoauth" name="password" placeholder="Password" required> </p>
             <p class="submit">
             <label onclick="document.getElementById('id01').style.display='block'" class="lablecolor">Temporary Password</label>    
             <input type="submit" name="commit" value="Login"></p>

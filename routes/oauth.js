@@ -9,10 +9,6 @@ const { isNullOrUndefined } = require('util');
 let token1 = '';
 var token = '';
 
-router.get('/', (req, res) => {
-    logger.info("Oauth Page requested");
-    res.render('oauth.ejs');
-});
 
 router.post('/', (req, res) => {
     logger.info("generateToken page requested");
@@ -29,8 +25,8 @@ router.post('/', (req, res) => {
     console.log(url + header);
     axios.post(url,
         querystring.stringify({
-            'grant_type': 'password', username: req.session.username
-            , password: req.session.username
+            'grant_type': 'password', username: req.body.username
+            , password: req.body.username
         })
         , { headers: header },
     ).then(function (response) {
@@ -39,6 +35,7 @@ router.post('/', (req, res) => {
         token = data.access_token;
         token1 = data.access_token;
         req.session.token = data.access_token;
+        req.session.username = req.body.username;
         let tokendetails = {
             "name": req.session.username,
             "token": token1
