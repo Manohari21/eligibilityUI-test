@@ -149,6 +149,11 @@ router.post("/", function (req, res, next) {
             return res.redirect(redirectUrl);
         }).catch((error) => {
             logger.error(error);
+			let statusCode = error.response.status;
+			logger.error(statusCode);
+			if(statusCode==401){
+				return res.redirect(getEnrollmentTokenExpireMessage());
+			}
             return res.redirect(getEnrollmentRedirectMessage());
         });
 
@@ -168,4 +173,12 @@ function getEnrollmentRedirectMessage(message = "Something went wrong") {
     });
 }
 
+function getEnrollmentTokenExpireMessage(message = "Token expired. pls login again") {
+    return url.format({
+        pathname: "/enrollment",
+        query: {
+            failure: message
+        }
+    });
+}
 module.exports = router;

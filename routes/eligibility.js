@@ -42,7 +42,10 @@ router.post("/", function (req, res, next) {
                 let statusCode = error.response.status;
                 logger.error(statusCode);
                 logger.error(error.response.data);
-                if (statusCode >= 400 && statusCode < 500) {
+				if(statusCode==401){
+                return res.send({ code: error.response.status, message: "Token expired. pls login again" });
+            }
+                else if(statusCode >= 400 && statusCode < 500) {
                     // No dependent or subscriber found
                     return res.send({ code: statusCode, message: "Invalid subscriber/dependent ID found. Please check subscriber/dependent ID." });
                 }
