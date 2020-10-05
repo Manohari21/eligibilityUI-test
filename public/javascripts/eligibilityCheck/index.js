@@ -11,7 +11,7 @@ $(document).ready(function () {
 });
 function onCancelClicked() {
     document.getElementById("eligibility-check-form").reset();
-  }
+}
 
 function addFieldValidationBorder(tag) {
     document.querySelector(tag).classList.add("border", "border-danger");
@@ -51,12 +51,11 @@ function onEligibilityBtnClicked() {
             let modalContents = document.querySelector("#eligibility-modal-content");
             let errorCode = result.code;
             let value = result.message;
-            let errorMessage = "Uh-Oh. Something went wrong. Please try again.";
             if (errorCode >= 300 || errorCode < 200) {
                 // Some error happened
                 let errorArea = modalContents.querySelector("#error-msg");
                 errorArea.classList.remove("d-none");
-                errorArea.textContent = errorMessage;
+                errorArea.textContent = value;
             } else {
                 let successArea = modalContents.querySelector("#success-msg");
                 successArea.classList.remove("d-none");
