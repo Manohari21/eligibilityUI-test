@@ -73,3 +73,19 @@ It uses docker containers for re-usable deployments and to streamline the develo
 6. Run `npm start`
 
 7. Navigate to `localhost:3000` to view the application
+
+
+CI test
+1. Run **steps 1 to 5** from the above heading
+
+2. Open project folder in Terminal
+
+3. Run `export ELIGIBILITY_SERVICE_URL=http://eligibility-server:8080/getBenefits`
+
+4. Run `export POLICY_SERVICE_URL=http://eligibility-server:8080/`
+
+5. Run `export ENROLLMENT_SERVICE_URL=http://eligibility-server:8080/`
+
+6. Run `npm start`
+
+7. Navigate to `localhost:3000` to view the application
